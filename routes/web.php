@@ -42,6 +42,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 Route::get('/dashboard-admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard-admin');
 Route::get('/dashboard-admin/topics', [AdminController::class, 'topics'])->middleware(['auth', 'verified'])->name('admin-topics');
+Route::get('/dashboard-admin/user-management', [AdminController::class, 'user_manage'])->middleware(['auth', 'verified'])->name('admin-user');
+Route::delete('/dashboard-admin/delete/{id}', [AdminController::class, 'destroy'])->name('user.delete');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

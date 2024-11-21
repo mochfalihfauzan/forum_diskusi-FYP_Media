@@ -47,7 +47,7 @@
                             class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white">Hot
                             Topik</a>
                         <a href="{{ route('topics.create') }}"
-                            class="text-white text-sm bg-slate-600 px-3 py-2 rounded shadow-xl hover:bg-slate-900">Buat
+                            class="text-white text-sm bg-slate-500 px-3 py-2 rounded shadow-xl hover:bg-slate-900">Buat
                             Topik</a>
                     </div>
                 </div>
@@ -70,18 +70,41 @@
                                 </p>
                                 <i class="fa-solid fa-chevron-down text-gray-400"></i>
                             </button>
+                            <div id="user-menu"
+                                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                                tabindex="-1">
+                                <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
+                                <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                                @if (Auth::user()->role == 'admin')
+                                    <a href="{{ route('dashboard-admin') }}"
+                                        class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                        id="user-menu-item-0">Dashboard Admin</a>
+                                @endif
+                                <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700"
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                        tabindex="-1" id="user-menu-item-2">Sign out</button>
+                                </form>
+
+
+                            </div>
                         @else
                             <a href="{{ route('login') }}"
-                                class="rounded-md text-sm bg-gray-900 px-3 py-2 font-semibold text-white">Login
+                                class="rounded-md text-sm bg-gray-900 px-3 py-2 font-semibold text-white hover:bg-slate-500">Login
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-
-                        </div>
                     @endif
 
+                </div>
 
 
 
-                    <!--
+
+
+                <!--
               Dropdown menu, show/hide based on menu state.
   
               Entering: "transition ease-out duration-100"
@@ -91,28 +114,10 @@
                 From: "transform opacity-100 scale-100"
                 To: "transform opacity-0 scale-95"
             -->
-                    <div id="user-menu"
-                        class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
-                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                        <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                            tabindex="-1" id="user-menu-item-0">Dashboard</a>
-                        @if (Auth::user()->role == 'admin')
-                            <a href="{{ route('dashboard-admin') }}" class="block px-4 py-2 text-sm text-gray-700"
-                                role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard Admin</a>
-                        @endif
-                        <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                        <form action="{{ route('logout') }}" method="POST">
-                            @csrf
-                            <button type="submit" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-2">Sign out</button>
-                        </form>
 
-                    </div>
-                </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->

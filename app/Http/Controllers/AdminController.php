@@ -22,9 +22,30 @@ class AdminController extends Controller
 
     public function topics()
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard');
+        }
         $topics = Topics::latest()->get();
         return view('admin-topics', compact('topics'), [
-            'title' => 'Dashboard Admin'
+            'title' => 'Topik Management'
         ]);
+    }
+
+    public function user_manage()
+    {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('dashboard');
+        }
+        $users = User::all();
+        return view('user-manage', compact('users'), [
+            'title' => 'User Management'
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('admin-user')->with('success', 'User berhasil dihapus');
     }
 }

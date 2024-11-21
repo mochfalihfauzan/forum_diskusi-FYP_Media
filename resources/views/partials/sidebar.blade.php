@@ -6,7 +6,7 @@
                     class="fa-solid fa-house mr-3"></i>Home</a>
             <a href="{{ route('admin-topics') }}" class="py-2 px-6 hover:bg-slate-300 font-medium"><i
                     class="fa-solid fa-message mr-3"></i>Topik</a>
-            <a href="" class="py-2 px-6 hover:bg-slate-300 font-medium"><i
+            <a href="{{ route('admin-user') }}" class="py-2 px-6 hover:bg-slate-300 font-medium"><i
                     class="fa-solid fa-users mr-3"></i>User Management</a>
 
         </div>

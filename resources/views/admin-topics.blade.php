@@ -36,10 +36,16 @@
                                             </div>
                                         </div>
                                         <div class="flex">
-                                            <a href=""
+                                            <form action="{{ route('topics.delete', $topic->id) }}" method="POST"
                                                 class="bg-red-500 py-2 w-full text-center rounded-bl-lg hover:bg-red-700">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
+                                                @csrf
+                                                @method('DELETE')
+                                                {{-- tombol confirm delete --}}
+                                                <button type="submit"
+                                                    onclick="return confirm('Apakah yakin ingin hapus topik?')"
+                                                    class="w-full"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+
                                             <a href="{{ route('topics.edit', $topic->id) }}"
                                                 class="bg-green-400 py-2 w-full text-center rounded-br-lg hover:bg-green-600">
                                                 <i class="fa-solid fa-pen-to-square"></i> </a>
