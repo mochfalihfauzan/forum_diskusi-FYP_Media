@@ -14,15 +14,14 @@
                     <div class="mb-3">
                         <a href="{{ route('topics.create') }}"
                             class="bg-sky-600 text-white py-2 px-5 rounded hover:bg-sky-800 shadow hover:shadow-lg font-semibold">+
-                            Buat
-                            Topik</a>
+                            Buat Topik</a>
                     </div>
                 </div>
             @else
                 <div class="lg:grid lg:grid-cols-2 gap-3">
 
                     @foreach ($topics as $topic)
-                        <div class="border shadow rounded-lg py-3 px-5 bg-white flex flex-col justify-between">
+                        <div class="border shadow rounded-lg py-3 px-5 bg-white flex flex-col justify-between mb-3 lg:mb-0">
                             <div class="min-h-40 flex-grow">
                                 <a href="{{ route('topics.show', $topic->id) }}">
                                     <p class="text-lg font-semibold overflow-hidden">{{ $topic->title }}</p>
@@ -39,7 +38,6 @@
                                     <p class="text-xs text-slate-600 ">{{ $topic->created_at->diffForHumans() }}</p>
                                     <div class="flex gap-2 items-center">
                                         <i class="fa-regular fa-comment"></i>
-                                        <i class="fa-regular fa-heart"></i>
                                         <button class="share-button" data-id="{{ $topic->id }}"><i
                                                 class="fa-solid fa-share"></i></button>
                                     </div>

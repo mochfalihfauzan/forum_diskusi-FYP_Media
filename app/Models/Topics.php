@@ -18,11 +18,6 @@ class Topics extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comments::class);
-    }
-
-    public function likes()
-    {
-        return $this->hasMany(Likes::class);
+        return $this->hasMany(Comments::class, 'topic_id');
     }
 }

@@ -39,15 +39,13 @@
                     </div>
                 @else
                     @foreach ($comments as $comment)
-                        <div class="mt-3">
+                        <div class="my-3">
                             <div class="flex items-center gap-2">
                                 <h3 class="font-medium">{{ $comment->user->name }}</h3> <small>|</small>
                                 <p class="text-xs text-gray-600">{{ $comment->created_at->diffForHumans() }}</p>
                             </div>
                             <p>{{ $comment->content }}</p>
-                            <a href="" class="text-xs text-sky-700 font-semibold hover:underline w-fit">
-                                Balas
-                            </a>
+
                         </div>
                         <hr>
                     @endforeach

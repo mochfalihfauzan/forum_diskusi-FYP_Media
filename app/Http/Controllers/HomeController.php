@@ -16,4 +16,17 @@ class HomeController extends Controller
             'title' => 'Beranda'
         ]);
     }
+
+    public function hot_topics()
+    {
+        $topics = Topics::withCount('comments')
+            ->orderBy('comments_count', 'desc')
+            ->get();
+        $comments = Comments::all();
+        $hot_topics = $topics;
+
+        return view('hot-topics', compact('hot_topics', 'topics', 'comments'), [
+            'title' => 'Hot Topics'
+        ]);
+    }
 }

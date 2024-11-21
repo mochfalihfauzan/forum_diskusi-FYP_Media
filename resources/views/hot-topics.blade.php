@@ -1,13 +1,15 @@
 @extends('layouts.main')
 @section('content')
     <div class="w-full md:w-3/4 flex flex-col gap-3 mb-5 mx-auto">
-        <h1 class="mx-5 md:mx-0 text-3xl font-semibold">{{ $title }}</h1>
+        <h1 class="mx-5 md:mx-0 text-3xl font-semibold">{{ $title }} 🔥</h1>
         @if (session('success'))
             <div class="bg-green-500 text-white p-3 rounded-md shadow-sm">
                 {{ session('success') }}
             </div>
         @endif
         @foreach ($topics as $item)
+            {{-- membandingkan jumlah comment dari semua topic --}}
+
             <div class="mx-5 md:mx-0 border shadow-sm py-5 px-8 rounded-md bg-white">
                 <div class="flex justify-between">
                     <div class="flex">

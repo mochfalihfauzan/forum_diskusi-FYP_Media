@@ -18,7 +18,7 @@
 
 <body class="bg-sky-100">
     @include('partials.navbar')
-    <div class="min-h-screen mx-0 md:mx-32 mt-20">
+    <div class="min-h-screen mx-0 md:mx-32 mt-6">
         @yield('content')
     </div>
     @include('partials.footer')

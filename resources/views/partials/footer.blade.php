@@ -1,5 +1,5 @@
-<footer class="bg-gray-800 text-white py-4">
-    <div class="container mx-auto flex justify-between items-center min-h-20">
+<footer class="bg-gray-800 text-white py-4 w-full bottom-0 z-50">
+    <div class="container text-center w-3/4 mx-auto md:flex justify-between items-center min-h-20 font-semibold">
         <div>
             <p>&copy; 2024 Forum Diskusi</p>
         </div>

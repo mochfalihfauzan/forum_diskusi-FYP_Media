@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="flex mt-16">
+    <div class="flex mt-5">
         @include('partials.sidebar')
         <div class="py-5 w-4/5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

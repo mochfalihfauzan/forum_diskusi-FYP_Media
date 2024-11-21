@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\testController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/hot-topics', [HomeController::class, 'hot_topics'])->name('hot-topics');
 
 Route::get('/create', [TopicsController::class, 'create'])->name('topics.create')->middleware('auth');
 Route::post('/store', [TopicsController::class, 'store'])->name('topics.store');
@@ -37,7 +39,9 @@ Route::post('/comments/{id}', [CommentsController::class, 'store'])->name('comme
 
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard-old', [DashboardController::class, 'dashboard_old'])->middleware(['auth', 'verified'])->name('dashboard-old');
+
+Route::get('/dashboard-admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard-admin');
+Route::get('/dashboard-admin/topics', [AdminController::class, 'topics'])->middleware(['auth', 'verified'])->name('admin-topics');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
