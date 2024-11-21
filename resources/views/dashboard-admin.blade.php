@@ -16,7 +16,7 @@
                                     <p class="text-2xl">{{ $users->count() }} User</p>
                                 </div>
                                 <div class="border w-1/3 px-5 py-3 rounded-lg bg-red-600 h-24 text-white">
-                                    <p class="text-2xl">{{ $topics->count() }} Topik</p>
+                                    <p class="text-xl">{{ $formatedDate }}</p>
                                 </div>
                             </div>
 

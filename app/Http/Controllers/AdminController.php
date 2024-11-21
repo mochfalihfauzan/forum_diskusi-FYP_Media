@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Topics;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,7 +16,9 @@ class AdminController extends Controller
         }
         $topics = Topics::latest()->get();
         $users = User::all();
-        return view('dashboard-admin', compact('topics', 'users'), [
+        $current_date = Carbon::now()->locale('id');
+        $formatedDate = $current_date->translatedFormat('l, d F Y');
+        return view('dashboard-admin', compact('topics', 'users', 'current_date', 'formatedDate'), [
             'title' => 'Dashboard Admin'
         ]);
     }
