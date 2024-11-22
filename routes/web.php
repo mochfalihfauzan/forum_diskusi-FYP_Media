@@ -20,11 +20,6 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/hot-topics', [HomeController::class, 'hot_topics'])->name('hot-topics');
 
@@ -34,12 +29,12 @@ Route::get('/show/{id}', [TopicsController::class, 'show'])->name('topics.show')
 Route::get('/edit/{id}', [TopicsController::class, 'edit'])->name('topics.edit');
 Route::put('/update/{id}', [TopicsController::class, 'update'])->name('topics.update');
 Route::delete('/delete-topic/{id}', [TopicsController::class, 'destroy'])->name('topics.delete');
-
 Route::post('/comments/{id}', [CommentsController::class, 'store'])->name('comments.store')->middleware('auth');
 
-
+// dashboard user
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+// dashboard admin
 Route::get('/dashboard-admin', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard-admin');
 Route::get('/dashboard-admin/topics', [AdminController::class, 'topics'])->middleware(['auth', 'verified'])->name('admin-topics');
 Route::get('/dashboard-admin/user-management', [AdminController::class, 'user_manage'])->middleware(['auth', 'verified'])->name('admin-user');

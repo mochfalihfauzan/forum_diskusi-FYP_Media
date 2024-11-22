@@ -26,7 +26,7 @@ class HomeController extends Controller
         $hot_topics = $topics;
 
         return view('hot-topics', compact('hot_topics', 'topics', 'comments'), [
-            'title' => 'Hot Topics'
+            'title' => 'Topik Populer'
         ]);
     }
 }

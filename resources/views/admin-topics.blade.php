@@ -45,7 +45,6 @@
                                                     onclick="return confirm('Apakah yakin ingin hapus topik?')"
                                                     class="w-full"><i class="fa-solid fa-trash"></i></button>
                                             </form>
-
                                             <a href="{{ route('topics.edit', $topic->id) }}"
                                                 class="bg-green-400 py-2 w-full text-center rounded-br-lg hover:bg-green-600">
                                                 <i class="fa-solid fa-pen-to-square"></i> </a>
@@ -97,7 +96,6 @@
         });
     </script>
     <script>
-        // copy url
         document.querySelectorAll('.copy-button').forEach(button => {
             button.addEventListener('click', () => {
                 const url = button.previousElementSibling.value;

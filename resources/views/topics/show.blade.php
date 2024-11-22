@@ -15,10 +15,8 @@
                             class="w-full object-cover rounded-sm">
                     </div>
                 @endif
-
             </div>
             <hr>
-
             <div class="mt-5">
                 <h3 class="text-lg font-medium">Komentar ({{ $comments->count() }})</h3>
                 <div class="mb-5">
@@ -32,7 +30,6 @@
                     </form>
                 </div>
                 <hr>
-
                 @if ($comments->count() == 0)
                     <div class="flex justify-center my-3">
                         <p class="text-slate-500">Belum ada komentar</p>
@@ -50,7 +47,6 @@
                         <hr>
                     @endforeach
                 @endif
-
             </div>
         </div>
     </div>

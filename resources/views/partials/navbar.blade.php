@@ -41,19 +41,19 @@
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="{{ route('home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-white"
+                        <a href="{{ route('home') }}"
+                            class="rounded-md px-3 py-2 text-sm hover:bg-gray-700 font-medium text-white"
                             aria-current="page">Beranda</a>
                         <a href="{{ route('hot-topics') }}"
-                            class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white">Hot
-                            Topik</a>
+                            class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white">
+                            Topik Populer</a>
                         <a href="{{ route('topics.create') }}"
-                            class="text-white text-sm bg-slate-500 px-3 py-2 rounded shadow-xl hover:bg-slate-900">Buat
+                            class="text-white text-sm bg-slate-500 px-3 py-2 rounded shadow-xl hover:bg-slate-600">Buat
                             Topik</a>
                     </div>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
 
                 <!-- Profile dropdown -->
 
@@ -76,7 +76,7 @@
                                 tabindex="-1">
                                 <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
                                 <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700"
-                                    role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                                    role="menuitem" tabindex="-1" id="user-menu-item-0">My Posts</a>
                                 @if (Auth::user()->role == 'admin')
                                     <a href="{{ route('dashboard-admin') }}"
                                         class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
@@ -89,15 +89,12 @@
                                     <button type="submit" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                         tabindex="-1" id="user-menu-item-2">Sign out</button>
                                 </form>
-
-
                             </div>
                         @else
                             <a href="{{ route('login') }}"
                                 class="rounded-md text-sm bg-gray-900 px-3 py-2 font-semibold text-white hover:bg-slate-500">Login
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                     @endif
-
                 </div>
 
 
@@ -124,16 +121,14 @@
     <div class="hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                aria-current="page">Dashboard</a>
-            <a href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-            <a href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-            <a href="#"
-                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+            <a href="/"
+                class="block rounded-md text-gray-300 px-3 py-2 text-base font-medium hover:text-white hover:bg-gray-700"
+                aria-current="page">Beranda</a>
+            <a href="{{ route('hot-topics') }}"
+                class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Topik
+                Populer</a>
             <a href="{{ route('topics.create') }}"
-                class="block rounded-md px-3 py-2 text-base font-medium bg-slate-600 text-white text-center hover:bg-gray-700 hover:text-white shadow-xl">Buat
+                class="block rounded-md px-3 py-2 text-base font-medium bg-slate-500 text-white text-center hover:bg-slate-600 hover:text-white shadow-xl">Buat
                 Topik</a>
         </div>
     </div>

@@ -24,7 +24,6 @@
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
                                 class="w-full h-80 object-cover mt-5 rounded-sm">
                         @endif
-
                     </div>
                 </a>
                 <div class="flex gap-3 mt-5 items-center">
@@ -49,12 +48,10 @@
                             <hr>
                             <button class="share-button py-2 px-3 text-start hover:bg-slate-400"
                                 data-id="{{ $item->id }}">Bagikan</button>
-
                         </div>
                     </div>
                 </div>
             </div>
-
             {{-- modal share topic --}}
             <div data-id="{{ $item->id }}"
                 class="share-modal fixed w-full h-screen hidden bg-slate-950 left-0 top-0 bg-opacity-50 ">

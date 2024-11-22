@@ -31,7 +31,6 @@ class CommentsController extends Controller
         $request->validate([
             'content' => 'required',
         ]);
-
         $content = $request->content;
 
         Comments::create([

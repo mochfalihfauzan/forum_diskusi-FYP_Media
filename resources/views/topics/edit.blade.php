@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    @if (Auth::user()->id == $topics->user_id)
+    @if (Auth::user()->id == $topics->user_id || Auth::user()->role == 'admin')
         <div class="flex justify-center items-center h-screen mb-10">
             <div class="w-3/4 md:w-2/3 bg-white p-6 rounded-xl shadow-md border">
                 @if (session('success'))
@@ -29,11 +29,10 @@
             </div>
         @else
             <div class="flex justify-center items-center h-screen mb-10">
-                <div class="w-3/4 md:w-2/3 bg-white p-6 rounded-xl shadow-md border">
+                <div class="w-3/4 md:w-2/3 bg-red-500 text-white p-6 rounded-xl shadow-md border">
                     <p class="text-center">Anda Tidak memiliki Akses</p>
                 </div>
             </div>
-
         </div>
     @endif
 @endsection

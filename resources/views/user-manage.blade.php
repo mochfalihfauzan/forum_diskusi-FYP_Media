@@ -20,7 +20,6 @@
                                     <th class="border border-gray-400 w-4/12 p-3">Role</th>
                                     <th class="border border-gray-400 w-2/12 p-3">Action</th>
                                 </tr>
-
                                 @foreach ($users as $user)
                                     <tr>
                                         <td class="border border-gray-400 font-medium text-center">{{ $loop->iteration }}
@@ -41,7 +40,6 @@
                                                 @else
                                                     <div><i class="fa-solid fa-lock"></i></div>
                                                 @endif
-
                                             </div>
                                         </td>
                                     </tr>
@@ -73,7 +71,6 @@
         });
     </script>
     <script>
-        // copy url
         document.querySelectorAll('.copy-button').forEach(button => {
             button.addEventListener('click', () => {
                 const url = button.previousElementSibling.value;

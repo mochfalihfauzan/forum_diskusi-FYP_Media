@@ -19,7 +19,6 @@
                 </div>
             @else
                 <div class="lg:grid lg:grid-cols-2 gap-3">
-
                     @foreach ($topics as $topic)
                         <div class="border shadow rounded-lg py-3 px-5 bg-white flex flex-col justify-between mb-3 lg:mb-0">
                             <div class="min-h-40 flex-grow">
@@ -31,15 +30,16 @@
                                             class="w-full object-cover max-h-60 mt-5 rounded-sm">
                                     @endif
                                 </a>
-
                             </div>
                             <div class="h-20 flex flex-col justify-end">
                                 <div class="flex justify-between items-center">
                                     <p class="text-xs text-slate-600 ">{{ $topic->created_at->diffForHumans() }}</p>
                                     <div class="flex gap-2 items-center">
-                                        <i class="fa-regular fa-comment"></i>
+                                        <a href="{{ route('topics.show', $topic->id) }}"><i
+                                                class="fa-regular fa-comment text-lg"></i>
+                                        </a>
                                         <button class="share-button" data-id="{{ $topic->id }}"><i
-                                                class="fa-solid fa-share"></i></button>
+                                                class="fa-solid fa-share text-lg"></i></button>
                                     </div>
                                 </div>
                                 <div class="mt-3 flex gap-3">

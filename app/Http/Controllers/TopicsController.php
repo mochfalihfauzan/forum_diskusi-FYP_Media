@@ -122,11 +122,7 @@ class TopicsController extends Controller
      */
     public function destroy(Topics $topics, $id)
     {
-
         $topic = Topics::find($id);
-        // if ($topic->image) {
-        //     Storage::delete($topic->image);
-        // }
         if ($topic->image) {
             Storage::disk('public')->delete($topic->image);
         }

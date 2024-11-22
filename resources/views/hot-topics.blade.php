@@ -8,8 +8,6 @@
             </div>
         @endif
         @foreach ($topics as $item)
-            {{-- membandingkan jumlah comment dari semua topic --}}
-
             <div class="mx-5 md:mx-0 border shadow-sm py-5 px-8 rounded-md bg-white">
                 <div class="flex justify-between">
                     <div class="flex">
@@ -56,7 +54,6 @@
                     </div>
                 </div>
             </div>
-
             {{-- modal share topic --}}
             <div data-id="{{ $item->id }}"
                 class="share-modal fixed w-full h-screen hidden bg-slate-950 left-0 top-0 bg-opacity-50 ">
@@ -77,7 +74,6 @@
     </div>
 @endsection
 
-
 @push('scripts')
     <script>
         document.querySelectorAll('.menu-button').forEach(button => {
@@ -96,7 +92,6 @@
                 modal.classList.remove('hidden');
             })
         });
-
         document.querySelectorAll('.close-share').forEach(button => {
             button.addEventListener('click', () => {
                 const modal = button.closest('.share-modal');
@@ -105,7 +100,6 @@
         });
     </script>
     <script>
-        // copy url
         document.querySelectorAll('.copy-button').forEach(button => {
             button.addEventListener('click', () => {
                 const url = button.previousElementSibling.value;

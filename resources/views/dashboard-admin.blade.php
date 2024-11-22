@@ -8,18 +8,17 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100 ">
                         <h2 class="text-2xl font-semibold">Halo, {{ Auth::user()->name }}</h2>
                         <div class="flex flex-col gap-3 my-5">
-                            <div class="flex w-full gap-5 mb-5">
-                                <div class="border w-1/3 px-5 py-3 rounded-lg bg-sky-600 h-24 text-white">
+                            <div class="md:flex w-full gap-5 mb-5">
+                                <div class="border w-full md:w-1/3 px-5 py-3 rounded-lg bg-sky-600 h-24 text-white mb-3">
                                     <p class="text-2xl">{{ $topics->count() }} Topik</p>
                                 </div>
-                                <div class="border w-1/3 px-5 py-3 rounded-lg bg-green-600 h-24 text-white">
+                                <div class="border w-full md:w-1/3 px-5 py-3 rounded-lg bg-green-600 h-24 text-white mb-3">
                                     <p class="text-2xl">{{ $users->count() }} User</p>
                                 </div>
-                                <div class="border w-1/3 px-5 py-3 rounded-lg bg-red-600 h-24 text-white">
-                                    <p class="text-xl">{{ $formatedDate }}</p>
+                                <div class="border w-full md:w-1/3 px-5 py-3 rounded-lg bg-red-600 h-24 text-white mb-3">
+                                    <p class="text-xl md:text-base lg:text-xl">{{ $formatedDate }}</p>
                                 </div>
                             </div>
-
                             <h2 class="text-xl font-semibold">Topik terbaru</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                                 @foreach ($topics as $topic)
@@ -91,7 +90,6 @@
         });
     </script>
     <script>
-        // copy url
         document.querySelectorAll('.copy-button').forEach(button => {
             button.addEventListener('click', () => {
                 const url = button.previousElementSibling.value;
