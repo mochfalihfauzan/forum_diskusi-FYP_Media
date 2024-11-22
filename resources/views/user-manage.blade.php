@@ -34,7 +34,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="bg-red-500 text-white px-4 py-2 rounded shadow"
+                                                            class="bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-700 hover:shadow-lg"
                                                             onclick="return confirm('Apakah Anda yakin ingin menghapus pengguna ini?')">Delete</button>
                                                     </form>
                                                 @else

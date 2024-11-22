@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="flex">
                                             <form action="{{ route('topics.delete', $topic->id) }}" method="POST"
-                                                class="bg-red-500 py-2 w-full text-center rounded-bl-lg hover:bg-red-700">
+                                                class="bg-red-500 py-2 w-full text-center rounded-bl-lg hover:bg-red-700 hover:shadow-lg">
                                                 @csrf
                                                 @method('DELETE')
                                                 {{-- tombol confirm delete --}}
@@ -46,7 +46,7 @@
                                                     class="w-full"><i class="fa-solid fa-trash"></i></button>
                                             </form>
                                             <a href="{{ route('topics.edit', $topic->id) }}"
-                                                class="bg-green-400 py-2 w-full text-center rounded-br-lg hover:bg-green-600">
+                                                class="bg-green-400 py-2 w-full text-center rounded-br-lg hover:bg-green-600 hover:shadow-lg">
                                                 <i class="fa-solid fa-pen-to-square"></i> </a>
                                         </div>
                                     </div>

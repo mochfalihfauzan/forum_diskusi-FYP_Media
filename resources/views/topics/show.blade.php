@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex justify-center mb-10 mx-5 md:mx-0">
         <div class="w-full md:w-2/3 border shadow-sm py-5 px-8 rounded-md bg-white">
-            <div class="mb-5">
+            <div class="mb-3">
                 <div class="flex justify-between">
                     <p class="text-sm text-gray-600">{{ $topics->user->name }}</p>
                     <p class="text-sm text-gray-600">{{ $topics->created_at->diffForHumans() }}</p>
@@ -16,7 +16,14 @@
                     </div>
                 @endif
             </div>
+            <div class="mb-5">
+                <button
+                    class="share-button border border-slate-600 hover:border-slate-950 hover:shadow-lg text-slate-600 hover:text-slate-950 w-fit py-2 px-3 rounded-xl"
+                    data-id="{{ $topics->id }}"><i
+                        class="fa-solid fa-share text-slate-600 text-lg mr-3"></i>Bagikan</button>
+            </div>
             <hr>
+
             <div class="mt-5">
                 <h3 class="text-lg font-medium">Komentar ({{ $comments->count() }})</h3>
                 <div class="mb-5">
@@ -50,4 +57,49 @@
             </div>
         </div>
     </div>
+
+    {{-- modal share topic --}}
+    <div data-id="{{ $topics->id }}"
+        class="share-modal fixed w-full h-screen hidden bg-slate-950 left-0 top-0 bg-opacity-50 ">
+        <div class="bg-white border p-5 fixed md:w-1/2 top-1/3 left-10 right-10 md:left-1/4">
+            <div class="mb-3 flex justify-between">
+                <h3 class="text-xl">Bagikan Topik Ini</h3>
+                <button class="close-share"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class=" flex flex-col w-full">
+                <input type="text" readonly class="url border w-full text-center rounded h-10 mb-3"
+                    value="{{ route('topics.show', $topics->id) }}">
+                <button class="copy-button bg-slate-700 py-2 px-3 text-white rounded hover:bg-slate-900">Bagikan</button>
+            </div>
+        </div>
+    </div>
 @endsection
+
+@push('scripts')
+    <script>
+        document.querySelectorAll('.share-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const modal = document.querySelector(`.share-modal[data-id="${id}"]`);
+                modal.classList.remove('hidden');
+            })
+        });
+
+        document.querySelectorAll('.close-share').forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.share-modal');
+                modal.classList.add('hidden');
+            });
+        });
+    </script>
+    <script>
+        // copy url
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const url = button.previousElementSibling.value;
+                navigator.clipboard.writeText(url);
+                alert('URL berhasil disalin');
+            });
+        });
+    </script>
+@endpush
