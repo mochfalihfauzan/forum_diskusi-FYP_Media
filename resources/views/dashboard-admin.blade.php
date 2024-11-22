@@ -22,11 +22,12 @@
                             <h2 class="text-xl font-semibold">Topik terbaru</h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                                 @foreach ($topics as $topic)
-                                    <div class="border shadow rounded-lg py-3 px-5 bg-white flex flex-col justify-between">
+                                    <div
+                                        class="border shadow rounded-lg py-3 px-5 bg-white flex flex-col justify-between hover:shadow-lg">
                                         <a href="{{ route('topics.show', $topic->id) }}">
                                             <div class="flex-grow min-h-40">
-                                                <p class="text-lg font-semibold">{{ $topic->title }}</p>
-                                                <p class="text-base">{{ $topic->content }}</p>
+                                                <p class="text-lg font-semibold overflow-hidden">{{ $topic->title }}</p>
+                                                <p class="text-base overflow-hidden">{{ $topic->content }}</p>
                                                 @if ($topic->image)
                                                     <img src="{{ asset('storage/' . $topic->image) }}"
                                                         alt="{{ $topic->title }}" class="rounded my-2">

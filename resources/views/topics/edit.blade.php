@@ -16,12 +16,22 @@
                     <input type="text" name="title" placeholder="Judul Topik"
                         class="w-full bg-gray-100 p-2 rounded-xl border border-gray-100 focus:outline-none focus:border-gray-300"
                         value="{{ old('title', $topics->title) }}">
+                    @error('title')
+                        <div class="text-sm text-red-400">{{ $message }}</div>
+                    @enderror
                     <input type="hidden" name="oldImage" value="{{ $topics->image }}">
+
                     <input type="file" name="image"
                         class="w-full bg-gray-100 p-2 rounded-xl border border-gray-100 focus:outline-none focus:border-gray-300 mt-4">
+                    @error('image')
+                        <div class="text-sm text-red-400">{{ $message }}</div>
+                    @enderror
                     <textarea name="content" placeholder="Konten Topik"
                         class="w-full bg-gray-100 p-2 rounded-xl border border-gray-100 focus:outline-none focus:border-gray-300 mt-4 max-h-96 min-h-20"
                         rows="4">{{ old('title', $topics->content) }}</textarea>
+                    @error('content')
+                        <div class="text-sm text-red-400">{{ $message }}</div>
+                    @enderror
                     <button type="submit"
                         class="w-full bg-blue-700 text-white px-5 py-3 rounded-xl shadow-md mt-6 hover:bg-blue-800 hover:shadow-xl">Update
                         Topik</button>

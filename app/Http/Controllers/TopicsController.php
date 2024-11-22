@@ -130,4 +130,11 @@ class TopicsController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Topik berhasil dihapus');
     }
+
+    // public function search(Request $request)
+    // {
+    //     $query = $request->query;
+    //     $topics = Topics::where('title', 'like', '%' . $query . '%')->orWhere('content', 'like', '%' . $query . '%')->get();
+    //     return view('home', compact('topics'));
+    // }
 }

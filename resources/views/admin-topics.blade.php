@@ -7,23 +7,31 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100 ">
                         <h2 class="text-2xl font-semibold">Topik Management</h2>
+                        {{-- Search --}}
+                        <div class="flex justify-center my-3">
+                            <input type="text" class="border px-5 w-2/3 rounded-s-full h-12 shadow-lg" placeholder="Cari">
+                            <button class="bg-sky-600 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg">Cari
+                                <i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
                         <div class="flex flex-col gap-3 my-5">
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                                 @foreach ($topics as $topic)
                                     <div>
                                         <div
                                             class="border shadow rounded-t-lg py-3 px-5 bg-white flex flex-col justify-between">
-                                            <a href="{{ route('topics.show', $topic->id) }}">
-                                                <div class="flex-grow min-h-40">
-                                                    <p class="text-lg font-semibold">{{ $topic->title }}</p>
-                                                    <p class="text-base">{{ $topic->content }}</p>
-                                                    <p class="text-sm text-gray-500">By {{ $topic->user->name }}</p>
-                                                    @if ($topic->image)
-                                                        <img src="{{ asset('storage/' . $topic->image) }}"
-                                                            alt="{{ $topic->title }}" class="rounded my-2">
-                                                    @endif
-                                                </div>
-                                            </a>
+                                            <div class="overflow-hidden">
+                                                <a href="{{ route('topics.show', $topic->id) }}">
+                                                    <div class="flex-grow min-h-40">
+                                                        <p class="text-lg font-semibold">{{ $topic->title }}</p>
+                                                        <p class="text-base">{{ $topic->content }}</p>
+                                                        <p class="text-sm text-gray-500">By {{ $topic->user->name }}</p>
+                                                        @if ($topic->image)
+                                                            <img src="{{ asset('storage/' . $topic->image) }}"
+                                                                alt="{{ $topic->title }}" class="rounded my-2">
+                                                        @endif
+                                                    </div>
+                                                </a>
+                                            </div>
                                             <div class="w-full flex justify-between items-center mt-3">
                                                 <p class="text-xs text-slate-600 ">{{ $topic->created_at->diffForHumans() }}
                                                 </p>

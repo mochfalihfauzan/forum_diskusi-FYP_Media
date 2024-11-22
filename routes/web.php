@@ -8,6 +8,7 @@ use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Topics;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::get('/edit/{id}', [TopicsController::class, 'edit'])->name('topics.edit')
 Route::put('/update/{id}', [TopicsController::class, 'update'])->name('topics.update');
 Route::delete('/delete-topic/{id}', [TopicsController::class, 'destroy'])->name('topics.delete');
 Route::post('/comments/{id}', [CommentsController::class, 'store'])->name('comments.store')->middleware('auth');
+
+// search
+Route::get('/search', [TopicsController::class, 'search'])->name('search');
 
 // dashboard user
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

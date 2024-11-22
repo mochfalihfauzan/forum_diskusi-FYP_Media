@@ -2,6 +2,18 @@
 @section('content')
     <div class="w-full md:w-3/4 flex flex-col gap-3 mb-5 mx-auto">
         <h1 class="mx-5 md:mx-0 text-3xl font-semibold">{{ $title }}</h1>
+
+        {{-- Search --}}
+        <div class="flex justify-center mb-3">
+            <form action="" method="GET" class="flex w-full mx-3 md:w-2/3">
+                <input type="text" name="query" class="px-5 w-10/12 md:w-9/12 rounded-s-full h-12 shadow-lg"
+                    placeholder="Cari">
+                <button type="submit"
+                    class="bg-sky-600 w-3/12 md:w-2/12 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg h-12 text-sm md:text-base">Cari
+                    <i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+
         @if (session('success'))
             <div class="bg-green-500 text-white p-3 rounded-md shadow-sm">
                 {{ session('success') }}

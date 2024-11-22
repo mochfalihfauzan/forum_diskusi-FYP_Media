@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('comments-regular.svg') }}" type="image/x-icon">
     <title>Forum Diskusi | @if (isset($title))
             {{ $title }}
         @endif
@@ -25,6 +26,5 @@
     @stack('scripts')
 
 </body>
-
 
 </html>

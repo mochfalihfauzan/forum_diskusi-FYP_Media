@@ -2,6 +2,14 @@
 @section('content')
     <div class="w-full md:w-3/4 flex flex-col gap-3 mb-5 mx-auto">
         <h1 class="mx-5 md:mx-0 text-3xl font-semibold">{{ $title }} 🔥</h1>
+
+        {{-- Search --}}
+        <div class="flex justify-center mb-3">
+            <input type="text" class="px-5 w-2/3 rounded-s-full h-12 shadow-lg" placeholder="Cari">
+            <button class="bg-sky-600 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg">Cari <i
+                    class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
         @if (session('success'))
             <div class="bg-green-500 text-white p-3 rounded-md shadow-sm">
                 {{ session('success') }}

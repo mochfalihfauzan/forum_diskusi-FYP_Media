@@ -8,7 +8,7 @@
                     <p class="text-sm text-gray-600">{{ $topics->created_at->diffForHumans() }}</p>
                 </div>
                 <h2 class="text-2xl font-semibold break-words whitespace-normal">{{ $topics->title }}</h2>
-                <p class="overflow-hidden">{{ $topics->content }}</p>
+                <p class="break-words whitespace-normal">{{ $topics->content }}</p>
                 @if ($topics->image)
                     <div class="mt-5">
                         <img src="{{ asset('storage/' . $topics->image) }}" alt="{{ $topics->title }}"
@@ -16,7 +16,7 @@
                     </div>
                 @endif
             </div>
-            <div class="mb-5">
+            <div class="mb-5 flex justify-end">
                 <button
                     class="share-button border border-slate-600 hover:border-slate-950 hover:shadow-lg text-slate-600 hover:text-slate-950 w-fit py-2 px-3 rounded-xl"
                     data-id="{{ $topics->id }}"><i
