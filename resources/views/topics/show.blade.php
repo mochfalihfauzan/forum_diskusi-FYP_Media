@@ -7,8 +7,8 @@
                     <p class="text-sm text-gray-600">{{ $topics->user->name }}</p>
                     <p class="text-sm text-gray-600">{{ $topics->created_at->diffForHumans() }}</p>
                 </div>
-                <h2 class="text-2xl font-semibold break-words whitespace-normal">{{ $topics->content }}</h2>
-                <p class="overflow-hidden">{{ $topics->title }}</p>
+                <h2 class="text-2xl font-semibold break-words whitespace-normal">{{ $topics->title }}</h2>
+                <p class="overflow-hidden">{{ $topics->content }}</p>
                 @if ($topics->image)
                     <div class="mt-5">
                         <img src="{{ asset('storage/' . $topics->image) }}" alt="{{ $topics->title }}"

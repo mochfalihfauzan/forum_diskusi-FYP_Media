@@ -17,9 +17,9 @@
                 </div>
                 <a href="{{ route('topics.show', $item->id) }}">
                     <div>
-                        <h2 class="text-xl font-semibold overflow-hidden break-words whitespace-normal">{{ $item->content }}
+                        <h2 class="text-xl font-semibold overflow-hidden break-words whitespace-normal">{{ $item->title }}
                         </h2>
-                        <p class="overflow-hidden">{{ $item->title }}</p>
+                        <p class="overflow-hidden">{{ $item->content }}</p>
                         @if ($item->image)
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
                                 class="w-full h-80 object-cover mt-5 rounded-sm">

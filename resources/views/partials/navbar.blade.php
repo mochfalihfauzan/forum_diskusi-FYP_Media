@@ -48,7 +48,8 @@
                             class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white">
                             Topik Populer</a>
                         <a href="{{ route('topics.create') }}"
-                            class="text-white text-sm bg-slate-500 px-3 py-2 rounded shadow-xl hover:bg-slate-600">Buat
+                            class="text-white text-sm font-medium bg-slate-500 px-3 py-2 rounded shadow-xl hover:bg-slate-600"><i
+                                class="fa-solid fa-pencil mr-2"></i>Buat
                             Topik</a>
                     </div>
                 </div>
@@ -128,7 +129,8 @@
                 class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Topik
                 Populer</a>
             <a href="{{ route('topics.create') }}"
-                class="block rounded-md px-3 py-2 text-base font-medium bg-slate-500 text-white text-center hover:bg-slate-600 hover:text-white shadow-xl">Buat
+                class="block rounded-md px-3 py-2 text-base font-medium bg-slate-500 text-white text-center hover:bg-slate-600 hover:text-white shadow-xl"><i
+                    class="fa-solid fa-pencil mr-2"></i>Buat
                 Topik</a>
         </div>
     </div>
