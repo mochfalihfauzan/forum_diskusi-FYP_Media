@@ -3,12 +3,28 @@
     <div class="mx-5 md:mx-0">
         <div class="w-full md:w-3/4 mx-auto flex flex-col gap-3 mb-5">
             <h1 class="text-3xl font-semibold">Topik milik anda</h1>
+
             {{-- Search --}}
             <div class="flex justify-center mb-3">
-                <input type="text" class="px-5 w-2/3 rounded-s-full h-12 shadow-lg" placeholder="Cari">
-                <button class="bg-sky-600 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg">Cari <i
-                        class="fa-solid fa-magnifying-glass"></i></button>
+                <form action="{{ route('dashboard') }}" method="GET" id="filterForm" class="flex w-full mx-3 md:w-2/3">
+                    <input type="text" name="search" id="search"
+                        class="px-5 w-10/12 md:w-9/12 rounded-s-full h-12 shadow-lg border" placeholder="Cari"
+                        value="{{ request('search') }}" oninput="filterTable()">
+                    <button type="submit"
+                        class="bg-sky-600 w-3/12 md:w-2/12 hover:bg-sky-500 text-white px-2 py-3 rounded-e-full shadow-lg h-12 text-sm md:text-base">
+                        <i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
             </div>
+
+            @if (request('search'))
+                <div class="flex justify-center mb-3 items-center">
+                    <p>Menampilkan Pencarian "<span class="font-semibold">{{ request('search') }}</span>"</p>
+                    <a href="{{ route('dashboard') }}" class="mx-2 py-1 px-2 bg-red-500 rounded-full"><i
+                            class="fa-solid fa-xmark text-white"></i></a>
+
+                </div>
+            @endif
+
             @if (session('success'))
                 <div class="bg-green-500 text-white p-3 rounded-md shadow-sm">
                     {{ session('success') }}

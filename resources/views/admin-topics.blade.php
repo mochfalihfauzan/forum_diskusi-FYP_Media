@@ -9,16 +9,31 @@
                         <h2 class="text-2xl font-semibold">Topik Management</h2>
                         {{-- Search --}}
                         <div class="flex justify-center my-3">
-                            <input type="text" class="border px-5 w-2/3 rounded-s-full h-12 shadow-lg" placeholder="Cari">
-                            <button class="bg-sky-600 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg">Cari
-                                <i class="fa-solid fa-magnifying-glass"></i></button>
+                            <form action="{{ route('admin-topics') }}" method="GET" id="filterForm"
+                                class="flex w-full mx-3 md:w-2/3">
+                                <input type="text" name="search" id="search"
+                                    class="px-5 w-10/12 lg:w-9/12 rounded-s-full h-12 shadow-lg border" placeholder="Cari"
+                                    value="{{ request('search') }}" oninput="filterTable()">
+                                <button type="submit"
+                                    class="bg-sky-600 w-3/12 lg:w-2/12 hover:bg-sky-500 text-white px-2 py-3 rounded-e-full shadow-lg h-12 text-xs lg:text-base">
+                                    <i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
                         </div>
+
+                        @if (request('search'))
+                            <div class="flex justify-center mb-3 items-center">
+                                <p>Menampilkan Pencarian "<span class="font-semibold">{{ request('search') }}</span>"</p>
+                                <a href="{{ route('admin-topics') }}" class="mx-2 py-1 px-2 bg-red-500 rounded-full"><i
+                                        class="fa-solid fa-xmark text-white"></i></a>
+
+                            </div>
+                        @endif
                         <div class="flex flex-col gap-3 my-5">
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                                 @foreach ($topics as $topic)
                                     <div>
                                         <div
-                                            class="border shadow rounded-t-lg py-3 px-5 bg-white flex flex-col justify-between">
+                                            class="border shadow rounded-t-lg py-3 px-5 bg-white flex flex-col justify-between h-80">
                                             <div class="overflow-hidden">
                                                 <a href="{{ route('topics.show', $topic->id) }}">
                                                     <div class="flex-grow min-h-40">
@@ -33,7 +48,8 @@
                                                 </a>
                                             </div>
                                             <div class="w-full flex justify-between items-center mt-3">
-                                                <p class="text-xs text-slate-600 ">{{ $topic->created_at->diffForHumans() }}
+                                                <p class="text-xs text-slate-600 ">
+                                                    {{ $topic->created_at->diffForHumans() }}
                                                 </p>
                                                 <div class="flex gap-2 items-center">
                                                     <a href="{{ route('topics.show', $topic->id) }}"><i

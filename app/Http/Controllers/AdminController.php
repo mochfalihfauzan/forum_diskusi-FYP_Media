@@ -23,23 +23,37 @@ class AdminController extends Controller
         ]);
     }
 
-    public function topics()
+    public function topics(Request $request)
     {
         if (auth()->user()->role !== 'admin') {
             return redirect()->route('dashboard');
         }
-        $topics = Topics::latest()->get();
+        $query = Topics::query();
+        if ($request->has('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('content', 'LIKE', '%' . $request->search . '%');
+            });
+        }
+
+        $topics = $query->orderBy('created_at', 'desc')->get();
         return view('admin-topics', compact('topics'), [
             'title' => 'Topik Management'
         ]);
     }
 
-    public function user_manage()
+    public function user_manage(Request $request)
     {
         if (auth()->user()->role !== 'admin') {
             return redirect()->route('dashboard');
         }
-        $users = User::all();
+        $query = User::query();
+        if ($request->has('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('name', 'LIKE', '%' . $request->search . '%');
+            });
+        }
+        $users = $query->orderBy('created_at', 'desc')->get();
         return view('user-manage', compact('users'), [
             'title' => 'User Management'
         ]);

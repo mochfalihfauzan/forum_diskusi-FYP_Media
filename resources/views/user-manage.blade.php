@@ -7,6 +7,28 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100 ">
                         <h2 class="text-2xl font-semibold">{{ $title }}</h2>
+                        {{-- Search --}}
+                        <div class="flex justify-center my-3">
+                            <form action="{{ route('admin-user') }}" method="GET" id="filterForm"
+                                class="flex w-full mx-3 lg:w-2/3">
+                                <input type="text" name="search" id="search"
+                                    class="px-5 w-10/12 lg:w-9/12 rounded-s-full h-12 shadow-lg border" placeholder="Cari"
+                                    value="{{ request('search') }}" oninput="filterTable()">
+                                <button type="submit"
+                                    class="bg-sky-600 w-3/12 lg:w-2/12 hover:bg-sky-500 text-white px-2 py-3 rounded-e-full shadow-lg h-12 text-xs lg:text-base">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </button>
+                            </form>
+                        </div>
+
+                        @if (request('search'))
+                            <div class="flex justify-center mb-3 items-center">
+                                <p>Menampilkan Pencarian "<span class="font-semibold">{{ request('search') }}</span>"</p>
+                                <a href="{{ route('admin-user') }}" class="mx-2 py-1 px-2 bg-red-500 rounded-full"><i
+                                        class="fa-solid fa-xmark text-white"></i></a>
+
+                            </div>
+                        @endif
                         @if (session('success'))
                             <div class="bg-green-500 text-white p-3 rounded-md shadow-sm my-3">
                                 {{ session('success') }}

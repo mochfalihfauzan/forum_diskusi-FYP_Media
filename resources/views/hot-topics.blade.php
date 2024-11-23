@@ -7,14 +7,13 @@
         <div class="flex justify-center mb-3">
             <form action="{{ route('hot-topics') }}" method="GET" id="filterForm" class="flex w-full mx-3 md:w-2/3">
                 <input type="text" name="search" id="search"
-                    class="px-5 w-10/12 md:w-9/12 rounded-s-full h-12 shadow-lg" placeholder="Cari"
+                    class="px-5 w-10/12 md:w-9/12 rounded-s-full h-12 shadow-lg border" placeholder="Cari"
                     value="{{ request('search') }}" oninput="filterTable()">
                 <button type="submit"
-                    class="bg-sky-600 w-3/12 md:w-2/12 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg h-12 text-sm md:text-base">Cari
+                    class="bg-sky-600 w-3/12 md:w-2/12 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg h-12 text-sm md:text-base">
                     <i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
-
         @if (request('search'))
             <div class="flex justify-center mb-3 items-center">
                 <p>Menampilkan Pencarian "<span class="font-semibold">{{ request('search') }}</span>"</p>
@@ -40,9 +39,9 @@
                 </div>
                 <a href="{{ route('topics.show', $item->id) }}">
                     <div>
-                        <h2 class="text-xl font-semibold overflow-hidden break-words whitespace-normal">{{ $item->content }}
+                        <h2 class="text-xl font-semibold overflow-hidden break-words whitespace-normal">{{ $item->title }}
                         </h2>
-                        <p class="overflow-hidden">{{ $item->title }}</p>
+                        <p class="overflow-hidden">{{ $item->content }}</p>
                         @if ($item->image)
                             <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
                                 class="w-full h-80 object-cover mt-5 rounded-sm">

@@ -21,11 +21,11 @@ class Topics extends Model
         return $this->hasMany(Comments::class, 'topic_id');
     }
 
-    public function scopeFilter($query, array $filters)
-    {
-        if (isset($filters['search'])) {
-            $query->where('title', 'LIKE', '%' . $filters['search'] . '%')
-                ->orWhere('content', 'LIKE', '%' . $filters['search'] . '%');
-        }
-    }
+    // public function scopeFilter($query, array $filters)
+    // {
+    //     if (isset($filters['search'])) {
+    //         $query->where('title', 'LIKE', '%' . $filters['search'] . '%')
+    //             ->orWhere('content', 'LIKE', '%' . $filters['search'] . '%');
+    //     }
+    // }
 }

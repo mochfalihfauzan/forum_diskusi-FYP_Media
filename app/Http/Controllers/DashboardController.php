@@ -8,9 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $topics = Topics::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $query = Topics::query();
+        if ($request->has('search')) {
+            $query->where(function ($q) use ($request) {
+                $q->where('title', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('content', 'LIKE', '%' . $request->search . '%');
+            });
+        }
+        $topics = $query->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         return view('dashboard', compact('topics'), [
             'title' => 'Dashboard'
         ]);

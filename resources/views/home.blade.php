@@ -7,7 +7,7 @@
         <div class="flex justify-center mb-3">
             <form action="{{ route('home') }}" method="GET" id="filterForm" class="flex w-full mx-3 md:w-2/3">
                 <input type="text" name="search" id="search"
-                    class="px-5 w-10/12 md:w-9/12 rounded-s-full h-12 shadow-lg" placeholder="Cari"
+                    class="px-5 w-10/12 md:w-9/12 rounded-s-full h-12 shadow-lg border" placeholder="Cari"
                     value="{{ request('search') }}" oninput="filterTable()">
                 <button type="submit"
                     class="bg-sky-600 w-3/12 md:w-2/12 hover:bg-sky-500 text-white px-4 py-3 rounded-e-full shadow-lg h-12 text-sm md:text-base">Cari
