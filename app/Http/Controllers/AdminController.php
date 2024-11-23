@@ -47,16 +47,28 @@ class AdminController extends Controller
         if (auth()->user()->role !== 'admin') {
             return redirect()->route('dashboard');
         }
-        $query = User::query();
+
+        $adminQuery = User::query();
+        $userQuery = User::query();
         if ($request->has('search')) {
-            $query->where(function ($q) use ($request) {
+            $adminQuery->where(function ($q) use ($request) {
                 $q->where('name', 'LIKE', '%' . $request->search . '%')
                     ->orWhere('email', 'LIKE', '%' . $request->search . '%')
                     ->orWhere('role', 'LIKE', '%' . $request->search . '%');
             });
         }
-        $users = $query->orderBy('created_at', 'desc')->get();
-        return view('user-manage', compact('users'), [
+        if ($request->has('search')) {
+            $userQuery->where(function ($q) use ($request) {
+                $q->where('name', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('role', 'LIKE', '%' . $request->search . '%');
+            });
+        }
+        $admins = $adminQuery->where('role', 'admin')->orderBy('created_at', 'desc')->get();
+        $users = $userQuery->where('role', 'user')->orderBy('created_at', 'desc')->get();
+
+
+        return view('user-manage', compact('users', 'admins'), [
             'title' => 'User Management'
         ]);
     }
