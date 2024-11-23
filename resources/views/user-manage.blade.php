@@ -34,19 +34,22 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <div class="mt-5">
+                        <div class="mt-5 overflow-x-auto">
                             <table class="border border-x-gray-400 w-full">
                                 <tr>
                                     <th class="border border-gray-400 w-1/12 p-3">No</th>
-                                    <th class="border border-gray-400 w-5/12 p-3">Nama</th>
-                                    <th class="border border-gray-400 w-4/12 p-3">Role</th>
+                                    <th class="border border-gray-400 w-3/12 p-3">Nama</th>
+                                    <th class="border border-gray-400 w-4/12 p-3">Email</th>
+                                    <th class="border border-gray-400 w-2/12 p-3">Role</th>
                                     <th class="border border-gray-400 w-2/12 p-3">Action</th>
                                 </tr>
+
                                 @foreach ($users as $user)
                                     <tr>
                                         <td class="border border-gray-400 font-medium text-center">{{ $loop->iteration }}
                                         </td>
                                         <td class="border border-gray-400 px-3 py-2">{{ $user->name }}</td>
+                                        <td class="border border-gray-400 px-3 py-2">{{ $user->email }}</td>
                                         <td class="border border-gray-400 px-3 py-2">{{ $user->role }}</td>
                                         <td class="border border-gray-400 px-3 py-2">
                                             <div class="flex gap-3 my-2 justify-center">

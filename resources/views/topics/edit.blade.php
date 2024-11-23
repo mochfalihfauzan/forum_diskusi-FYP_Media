@@ -1,7 +1,8 @@
 @extends('layouts.main')
 @section('content')
-    @if (Auth::user()->id == $topics->user_id || Auth::user()->role == 'admin')
-        <div class="flex justify-center items-center h-screen mb-10">
+    <div class="flex justify-center items-center h-screen mb-10">
+
+        @if (Auth::user()->id == $topics->user_id || Auth::user()->role == 'admin')
             <div class="w-3/4 md:w-2/3 bg-white p-6 rounded-xl shadow-md border">
                 @if (session('success'))
                     <div class="bg-green-500 text-white p-3 rounded-md shadow-sm mb-3">
@@ -38,11 +39,13 @@
                 </form>
             </div>
         @else
-            <div class="flex justify-center items-center h-screen mb-10">
+            <div class="flex justify-center items-center w-full h-screen mb-10">
                 <div class="w-3/4 md:w-2/3 bg-red-500 text-white p-6 rounded-xl shadow-md border">
-                    <p class="text-center">Anda Tidak memiliki Akses</p>
+                    <p class="text-center"><i class="fa-solid fa-triangle-exclamation mx-2"></i>Anda Tidak memiliki Akses<i
+                            class="fa-solid fa-triangle-exclamation mx-2"></i></p>
                 </div>
             </div>
-        </div>
-    @endif
+        @endif
+    </div>
+
 @endsection

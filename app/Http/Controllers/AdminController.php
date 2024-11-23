@@ -50,7 +50,9 @@ class AdminController extends Controller
         $query = User::query();
         if ($request->has('search')) {
             $query->where(function ($q) use ($request) {
-                $q->where('name', 'LIKE', '%' . $request->search . '%');
+                $q->where('name', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('email', 'LIKE', '%' . $request->search . '%')
+                    ->orWhere('role', 'LIKE', '%' . $request->search . '%');
             });
         }
         $users = $query->orderBy('created_at', 'desc')->get();
